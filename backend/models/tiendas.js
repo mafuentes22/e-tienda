@@ -44,13 +44,6 @@ const Tienda = sequelize.define('Tienda',
     },
     twitter:{
         type: DataTypes.STRING
-    },
-    idHorario:{
-        type: DataTypes.INTEGER,
-        references:{
-            model: Horario,
-            key: 'id'
-        }
     }
 },
 {

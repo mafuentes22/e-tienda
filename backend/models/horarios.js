@@ -3,6 +3,7 @@
 const { DataTypes } = require('sequelize');
 let sequelize = require('../database/database');
 const Dia = require('../models/dias');
+const Tienda = require('../models/tiendas');
 
 const Horario = sequelize.define('Horario',
 {
@@ -10,6 +11,14 @@ const Horario = sequelize.define('Horario',
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
+    },
+    idTienda:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references:{
+            model: Tienda,
+            key: 'id'
+        }
     },
     horaEnt: 
     {

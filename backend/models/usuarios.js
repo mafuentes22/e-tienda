@@ -15,18 +15,16 @@ const Usuario = sequelize.define('Usuario',
     },
     usuario:{
         type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    contrasena:{
+        type: DataTypes.STRING,
         allowNull: false
     },
     nombre:{
         type: DataTypes.STRING,
         allowNull: true
-    },
-    idTienda:{
-        type: DataTypes.INTEGER,
-        references: {
-            model: Tienda,
-            key: 'id'
-        }
     },
     idTipo:{
         type: DataTypes.INTEGER,

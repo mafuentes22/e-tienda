@@ -4,8 +4,13 @@ const Horario = require('../models/horarios');
 
 function getHorario(req, res)
 {
-    const idHor = req.params.id;
-    Horario.findByPk(idHor)
+    // Permite buscar los horarios de una tienda en especifico
+    const idT = req.params.id;
+    Horario.findAll({
+        where:{
+            idTienda: idT
+        }
+    })
     .then((result)=>{
         res.status(200).send({result});
     })
@@ -17,6 +22,7 @@ function getHorario(req, res)
 function svHorario(req, res)
 {
     Horario.create({
+        idTienda: req.body.idTienda,
         horaEnt: req.body.horaE,
         horaSal: req.body.horaS,
         idDia: req.body.idDia
@@ -48,7 +54,7 @@ function upHorario(req, res)
         })
     })
     .catch(err => {
-        res.status(500).send({message: 'Failed to get ' + err});
+        res.status(404).send({message: 'Failed to get ' + err});
     })
 }
 
