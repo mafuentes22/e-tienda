@@ -14,8 +14,10 @@ const db = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
         acquire: 30000,
         idle: 10000
     },
+    logging: false,
     dialect: 'mysql',
     dialectOptions: {
+        decimalNumbers: true,
         insecureAuth: true
     },
     define: {

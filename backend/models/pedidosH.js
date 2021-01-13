@@ -2,6 +2,7 @@
 
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/database');
+const PedidoD = require('./pedidosD');
 const Tienda = require('./tiendas');
 const Usuario = require('./usuarios');
 
@@ -34,5 +35,7 @@ const PedidoH = sequelize.define('PedidoH', {
 },{
     tableName: 'pedidosH'
 })
+
+PedidoH.Detalle = PedidoH.hasMany(PedidoD, {foreignKey: 'idPedido', as: 'Detalle'});
 
 module.exports = PedidoH;
